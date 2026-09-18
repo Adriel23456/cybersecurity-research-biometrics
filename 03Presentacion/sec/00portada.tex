@@ -1,0 +1,31 @@
+% ============================================================
+% sec/00portada.tex — portada
+% ============================================================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[tecnavy]
+    (current page.north west) rectangle
+    ([yshift=-2.6cm] current page.north east);
+  \fill[tecsteel]
+    ([yshift=-2.6cm] current page.north west) rectangle
+    ([yshift=-2.7cm] current page.north east);
+  \node[anchor=west, inner sep=0pt]
+    at ([xshift=0.7cm, yshift=-1.3cm] current page.north west)
+    {\safeimage[height=1.4cm]{TUlogo.png}};
+  \node[anchor=east, align=right, text=white, font=\footnotesize]
+    at ([xshift=-0.7cm, yshift=-1.3cm] current page.north east)
+    {\textbf{\docInstitute}\\ \docSchool\\
+     \color{teclight}\docCourse\ \textbullet\ \docCode};
+  \node[anchor=north, align=center, text width=14cm]
+    at ([yshift=-3.3cm] current page.north)
+    {{\large\bfseries\color{tecnavy}\docTitle}\\[8pt]
+     {\small\itshape\color{tecsteel}\docTagline}};
+  \draw[tecrule, line width=0.4pt]
+    ([xshift=-3cm, yshift=1.7cm] current page.south) --
+    ([xshift=3cm, yshift=1.7cm] current page.south);
+  \node[anchor=south, align=center, text width=15cm, font=\scriptsize]
+    at ([yshift=0.5cm] current page.south)
+    {\textbf{Grupo \docGroup:} \docAuthors\\[4pt]
+     {\color{labelgray}Profesor: \docProfessor\ \textbullet\ \docDate}};
+\end{tikzpicture}
+\end{frame}

@@ -1,0 +1,131 @@
+% ============================================================
+% sec/04demo.tex — Demo o ejemplo práctico (aprox. 5-6 min)
+% ============================================================
+\section{Demostraci\'on}
+
+\begin{frame}{Objetivo de la demostraci\'on}
+  \decidir{Expone: nombre \textbullet\ aprox. 5--6 min toda la secci\'on}
+
+  \begin{block}{Qu\'e reproduce}
+    El mecanismo que la literatura eval\'ua a gran escala: una
+    \textbf{decisi\'on por umbral sobre una distancia} entre dos rostros.
+  \end{block}
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{V\'inculo con la literatura}
+        \scriptsize
+        Falsas coincidencias y falsos rechazos son las m\'etricas que usa
+        NIST \cite{grother_nistir8280_2019}. Mover el umbral cambia
+        cu\'antos de cada tipo ocurren.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Qu\'e no puede mostrar}
+        \scriptsize
+        Con pocas personas no se mide sesgo demogr\'afico. La demo ilustra
+        el mecanismo, no su exactitud poblacional.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Montaje}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{T\'ecnico}
+        \scriptsize
+        \textbf{Librer\'ia:} \pc{librer\'ia y versi\'on}\\[3pt]
+        \textbf{Modelo:} \pc{modelo de representaci\'on}\\[3pt]
+        \textbf{Entorno:} \pc{equipo, SO, Python}\\[3pt]
+        \textbf{C\'odigo:} carpeta \texttt{demo/} del repositorio
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Datos y \'etica}
+        \scriptsize
+        Solo fotos de integrantes del grupo, con consentimiento
+        \pc{forma del consentimiento}.\\[3pt]
+        Procesamiento local, sin servicios externos.\\[3pt]
+        Im\'agenes y representaciones eliminadas al terminar.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{?`C\'omo decide el sistema?}
+  \framesubtitle{Esquema ilustrativo, no son resultados de la demo}
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=0.82\textwidth, height=4.6cm,
+        xmin=0, xmax=1.2, ymin=0, ymax=1.15,
+        xlabel={\scriptsize Distancia entre representaciones},
+        ylabel={\scriptsize Frecuencia},
+        yticklabels={}, xticklabels={},
+        axis lines=left, tick style={draw=none},
+        legend style={font=\tiny, draw=none, fill=none, at={(0.98,0.98)},
+                      anchor=north east}]
+      \addplot[tecsteel, very thick, domain=0:1.2, samples=120]
+        {exp(-((x-0.35)^2)/(2*0.09^2))};
+      \addlegendentry{Mismo individuo}
+      \addplot[blockred, very thick, domain=0:1.2, samples=120]
+        {exp(-((x-0.80)^2)/(2*0.11^2))};
+      \addlegendentry{Individuos distintos}
+      \draw[tecnavy, dashed, thick] (axis cs:0.58,0) -- (axis cs:0.58,1.1);
+      \node[font=\tiny, tecnavy, anchor=south] at (axis cs:0.58,1.1) {umbral};
+      \node[font=\tiny, anchor=west, align=left] at (axis cs:0.02,0.55)
+        {izquierda del umbral:\\ \textbf{coincide}};
+      \node[font=\tiny, anchor=east, align=right] at (axis cs:1.18,0.55)
+        {derecha del umbral:\\ \textbf{no coincide}};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+  \scriptsize
+  Donde las curvas se solapan aparecen los errores. Bajar el umbral reduce
+  falsas coincidencias pero aumenta falsos rechazos, y viceversa.
+\end{frame}
+
+\begin{frame}{Demostraci\'on en vivo}
+  \begin{enumerate}\setlength{\itemsep}{6pt}
+    \item Registrar el rostro de referencia de un integrante.
+    \item Comparar con otra foto del mismo integrante.
+    \item Comparar con la foto de otro integrante.
+    \item Mover el umbral y observar c\'omo cambia la decisi\'on.
+  \end{enumerate}
+
+  \vspace{0.3cm}
+  \begin{block}{Respaldo}
+    \scriptsize Si la demostraci\'on en vivo falla:
+    video en \pc{enlace al video de respaldo}.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Resultados y l\'imites}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \centering\scriptsize
+      \begin{tabular}{@{}ccc@{}}
+        \toprule
+        \textbf{Umbral} & \textbf{Falsas coincidencias} & \textbf{Falsos rechazos}\\
+        \midrule
+        \pct & \pct & \pct\\
+        \pct & \pct & \pct\\
+        \pct & \pct & \pct\\
+        \bottomrule
+      \end{tabular}\\[4pt]
+      {\tiny\color{labelgray} Pares comparados: \pc{n}}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{alertblock}{L\'imites}
+        \scriptsize
+        Muestra peque\~na y homog\'enea; condiciones de captura
+        controladas; sin conclusiones sobre sesgo demogr\'afico.
+      \end{alertblock}
+      \begin{exampleblock}{Lo que s\'i muestra}
+        \scriptsize
+        \pc{observaci\'on principal del grupo al mover el umbral}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}

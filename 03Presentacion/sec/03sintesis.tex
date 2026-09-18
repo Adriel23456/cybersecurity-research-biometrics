@@ -1,0 +1,148 @@
+% ============================================================
+% sec/03sintesis.tex — Síntesis cruzada (aprox. 5-6 min)
+% ============================================================
+\section{S\'intesis cruzada}
+
+\begin{frame}{Ocho trabajos, tres ejes}
+  \decidir{Expone: nombre \textbullet\ aprox. 5--6 min toda la secci\'on}
+
+  \vspace{0.2cm}
+  \footnotesize
+  \begin{tabularx}{\textwidth}{@{}P{3.2cm} Y P{4.2cm}@{}}
+    \toprule
+    \textbf{Eje} & \textbf{Trabajos} & \textbf{Pregunta}\\
+    \midrule
+    Sesgo demogr\'afico &
+    Buolamwini y Gebru \cite{buolamwini_gendershades_2018};
+    Raji y Buolamwini \cite{raji_actionable_2019};
+    Grother et al.\ \cite{grother_nistir8280_2019};
+    Drozdowski et al.\ \cite{drozdowski_bias_2020} &
+    ?`Cu\'anto var\'ia el error entre grupos?\\
+    \addlinespace[4pt]
+    Ataques y contramedidas &
+    Sharif et al.\ \cite{sharif_accessorize_2016};
+    Shan et al.\ \cite{shan_fawkes_2020} &
+    ?`Se puede enga\~nar o evadir el sistema?\\
+    \addlinespace[4pt]
+    Vigilancia en espacio p\'ublico &
+    Garvie et al.\ \cite{garvie_perpetual_2016};
+    Fussey y Murray \cite{fussey_essex_2019} &
+    ?`Qu\'e pasa al desplegarlo?\\
+    \bottomrule
+  \end{tabularx}
+
+  \vspace{0.3cm}
+  {\scriptsize\color{labelgray} Matriz completa en la Tabla I del informe.}
+\end{frame}
+
+\begin{frame}{Eje 1: el error no es igual para todos}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Auditor\'ia comercial \cite{buolamwini_gendershades_2018}}
+        \begin{columns}
+          \begin{column}{0.48\linewidth}
+            \cifra{34.7\,\%}{error m\'aximo, mujeres de piel oscura}
+          \end{column}
+          \begin{column}{0.48\linewidth}
+            \cifra{0.8\,\%}{hombres de piel clara}
+          \end{column}
+        \end{columns}
+        \scriptsize Tras publicarse, los proveedores se\~nalados redujeron
+        sus brechas \cite{raji_actionable_2019}.
+      \end{block}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Evaluaci\'on NIST \cite{grother_nistir8280_2019}}
+        \cifra{10 a $>$100$\times$}{m\'as falsos positivos seg\'un el grupo}
+        \scriptsize 189 algoritmos de 99 desarrolladores; la magnitud var\'ia
+        mucho entre algoritmos.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \begin{alertblock}{Lectura cruzada}
+    \scriptsize
+    Coinciden en la direcci\'on, no en la magnitud: uno mide
+    clasificaci\'on de sexo sobre 1\,270 retratos; el otro, identificaci\'on
+    sobre 18.27 millones de im\'agenes. Las cifras no se comparan
+    directamente.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Eje 2: la integridad del sistema es atacable}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Ataque f\'isico \cite{sharif_accessorize_2016}}
+        \scriptsize
+        Anteojos con patrones impresos permiten evadir la identificaci\'on o
+        suplantar a otra persona.\\[4pt]
+        \textbf{Amenaza:} integridad.\\
+        \textbf{Control:} detecci\'on de ataques de presentaci\'on
+        (ISO/IEC 30107-3).
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Protecci\'on del usuario \cite{shan_fawkes_2020}}
+        \scriptsize
+        Perturbaciones imperceptibles en fotos propias antes de publicarlas
+        impiden entrenar modelos no autorizados.\\[4pt]
+        \textbf{Protege:} confidencialidad.\\
+        \textbf{L\'imite:} supone un atacante que no se adapta.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \begin{center}
+    \scriptsize\color{tecnavy}\textbf{Ataque y defensa se juegan en el mismo
+    espacio: la representaci\'on del rostro.}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Eje 3: del laboratorio a la calle}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Escala \cite{garvie_perpetual_2016}}
+        \cifra{$\approx$117 M}{adultos en redes policiales de
+        reconocimiento facial en EE.\,UU.\ (2016)}
+      \end{block}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Despliegue real \cite{fussey_essex_2019}}
+        \cifra{8 de 42}{coincidencias verificadas como correctas en las
+        pruebas de Londres \pct}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \begin{alertblock}{Lectura cruzada}
+    \scriptsize
+    La exactitud medida con im\'agenes controladas no se traslada al
+    despliegue en espacio p\'ublico: cambian la iluminaci\'on, la pose, la
+    base de referencia y la tasa base de personas buscadas.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Contradicciones, vac\'ios y conexi\'on con el curso}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \begin{itemize}\setlength{\itemsep}{5pt}
+        \item \textbf{Laboratorio vs.\ despliegue:} NIST mide algoritmos;
+              Essex mide un sistema operando.
+        \item \textbf{Protecci\'on vs.\ adaptaci\'on:} las defensas del
+              usuario pierden eficacia si el modelo atacante se reentrena.
+        \item \textbf{Vac\'io local:} \pc{hallazgo verificado sobre datos
+              biom\'etricos en la Ley 8968}.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{Conceptos del curso}
+        \scriptsize
+        \textbf{Tr\'iada CID} --- cada eje afecta un componente distinto.\\[3pt]
+        \textbf{Principio (Clase 4)} --- \pc{principio y aplicaci\'on}.\\[3pt]
+        \textbf{Pol\'itica (Clase 5)} --- \pc{pol\'itica y aplicaci\'on}.\\[3pt]
+        \textbf{\'Etica} --- consentimiento y proporcionalidad del uso.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}

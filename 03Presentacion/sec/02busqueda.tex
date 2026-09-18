@@ -1,0 +1,67 @@
+% ============================================================
+% sec/02busqueda.tex — Búsqueda y selección (aprox. 2 min)
+% ============================================================
+\section{B\'usqueda y selecci\'on}
+
+\begin{frame}{?`D\'onde y c\'omo buscamos?}
+  \decidir{Expone: nombre \textbullet\ aprox. 2 min toda la secci\'on}
+
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \scriptsize
+      \begin{tabularx}{\linewidth}{@{}l Y@{}}
+        \toprule
+        \textbf{Fuente} & \textbf{Uso}\\
+        \midrule
+        Scopus & B\'usqueda principal y filtrado por a\~no\\
+        IEEE Xplore (TEC) & Acceso a texto completo\\
+        Semantic Scholar & Citas y trabajos relacionados\\
+        Connected Papers & Expansi\'on desde trabajos semilla\\
+        Consensus & Verificaci\'on r\'apida de hallazgos\\
+        NIST, SCIJ, PRODHAB & Fuentes t\'ecnicas y normativas\\
+        \bottomrule
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{Palabras clave}
+        \scriptsize
+        \textit{facial recognition bias} \textbullet\
+        \textit{demographic differentials} \textbullet\
+        \textit{presentation attack detection} \textbullet\
+        \textit{face recognition surveillance} \textbullet\
+        \textit{Ley 8968} \textbullet\
+        \pc{otras palabras clave usadas}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{?`C\'omo elegimos?}
+  \begin{columns}[c]
+    \begin{column}{0.46\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[etapa=tecnavy, minimum width=5.8cm] (a)
+          {Registros identificados: \pc{n}};
+        \node[etapa=tecsteel, minimum width=4.6cm, below=0.15cm of a] (b)
+          {Tras t\'itulo y resumen: \pc{n}};
+        \node[etapa=tecsteel!80, minimum width=3.4cm, below=0.15cm of b] (c)
+          {Lectura completa: \pc{n}};
+        \node[etapa=okgreen, minimum width=2.4cm, below=0.15cm of c] (d)
+          {Incluidos: 8};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{exampleblock}{Inclusi\'on}
+        \scriptsize
+        Al menos dos acad\'emicas con revisi\'on por pares. T\'ecnicas con
+        autor\'ia y fecha (NIST, universidades, centros de investigaci\'on).
+      \end{exampleblock}
+      \begin{alertblock}{Exclusi\'on}
+        \scriptsize
+        Notas period\'isticas sin fuente primaria, blogs sin autor, foros y
+        Wikipedia. Si un medio cita un informe, citamos el original.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}

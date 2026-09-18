@@ -1,0 +1,90 @@
+% ============================================================
+% InformePrincipal.tex — Artículo IEEE, revisión de literatura
+% CE-1115 Seguridad de la Información · II Semestre 2026
+% Build: latexmk -pdf InformePrincipal.tex
+% ============================================================
+\documentclass[conference]{IEEEtran}
+
+\input{preamble}
+
+\begin{document}
+
+\title{Reconocimiento Facial en Espacios P\'ublicos: Sesgo Algor\'itmico,
+Riesgos de Seguridad y el Marco Costarricense de Protecci\'on de Datos
+frente a Casos Internacionales\\
+{\footnotesize \textit{Revisi\'on de literatura --- Tema 9: Reconocimiento
+facial, biometr\'ia y vigilancia - Curso CE-1115 Seguridad de la
+Informaci\'on, II Semestre 2026}}}
+
+\author{
+\IEEEauthorblockN{Meibel Ceciliano}
+\IEEEauthorblockA{\textit{Escuela de Ingenier\'ia en Computadores} \\
+\textit{Instituto Tecnol\'ogico de Costa Rica}\\
+Cartago, Costa Rica \\
+\pc{carnet}}
+\and
+\IEEEauthorblockN{Carlos Contreras}
+\IEEEauthorblockA{\textit{Escuela de Ingenier\'ia en Computadores} \\
+\textit{Instituto Tecnol\'ogico de Costa Rica}\\
+Cartago, Costa Rica \\
+\pc{carnet}}
+\and
+\IEEEauthorblockN{Ludwin Ramos}
+\IEEEauthorblockA{\textit{Escuela de Ingenier\'ia en Computadores} \\
+\textit{Instituto Tecnol\'ogico de Costa Rica}\\
+Cartago, Costa Rica \\
+\pc{carnet}}
+\and
+\IEEEauthorblockN{Henry Nu\~nez}
+\IEEEauthorblockA{\textit{Escuela de Ingenier\'ia en Computadores} \\
+\textit{Instituto Tecnol\'ogico de Costa Rica}\\
+Cartago, Costa Rica \\
+\pc{carnet}}
+\and
+\IEEEauthorblockN{Adriel S. Chaves Salazar}
+\IEEEauthorblockA{\textit{Escuela de Ingenier\'ia en Computadores} \\
+\textit{Instituto Tecnol\'ogico de Costa Rica}\\
+Cartago, Costa Rica \\
+2021031465}
+}
+
+\maketitle
+
+\begin{abstract}
+El reconocimiento facial se ha desplazado del desbloqueo de dispositivos a
+la identificaci\'on masiva en espacios p\'ublicos, lo que lo convierte en un
+problema de seguridad de la informaci\'on y no solo de visi\'on por
+computadora. Este trabajo revisa literatura acad\'emica y t\'ecnica sobre
+tres ejes: el sesgo demogr\'afico documentado en sistemas comerciales y
+gubernamentales, los ataques contra la integridad de estos sistemas y el
+debate t\'ecnico-legal sobre su uso para vigilancia. La b\'usqueda se
+realiz\'o en Scopus, IEEE Xplore, Semantic Scholar y recursos de la
+Biblioteca TEC, complementada con informes del NIST y documentos
+normativos. Los trabajos revisados coinciden en que las tasas de error
+var\'ian de forma significativa seg\'un sexo y tono de piel, y en que el
+umbral de decisi\'on traslada ese error a falsos positivos con consecuencias
+sobre personas concretas. \pc{hallazgo propio del grupo tras la
+discusi\'on}. Se contrasta la Ley 8968 de Costa Rica con el Reglamento
+Europeo de Inteligencia Artificial y con casos de sanci\'on y detenciones
+err\'oneas en Estados Unidos y Europa. \pc{conclusi\'on principal sobre el
+vac\'io normativo costarricense}. El an\'alisis se vincula con la tr\'iada
+CID, la privacidad y los controles t\'ecnicos y organizacionales vistos en
+el curso.
+\end{abstract}
+
+\begin{IEEEkeywords}
+reconocimiento facial, biometr\'ia, vigilancia, sesgo algor\'itmico,
+privacidad, protecci\'on de datos, Ley 8968
+\end{IEEEkeywords}
+
+\safeinput{sec/01introduccion}
+\safeinput{sec/02metodologia}
+\safeinput{sec/03desarrollo}
+\safeinput{sec/04discusion}
+\safeinput{sec/05impacto}
+\safeinput{sec/06conclusiones}
+
+\bibliographystyle{IEEEtran}
+\bibliography{sec/99referencias}
+
+\end{document}

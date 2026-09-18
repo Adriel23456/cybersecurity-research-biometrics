@@ -1,0 +1,182 @@
+% ============================================================
+% tab/matriz_revision.tex
+%
+% COLUMNAS OBLIGATORIAS (enunciado): referencia, problema,
+% método, datos o entorno, hallazgo principal, limitación.
+% No sustituir, no reordenar. No copiar abstracts.
+%
+% CRITERIO DE INCLUSIÓN: fuentes académicas y técnicas con
+% autoría identificable. Las fuentes de actualidad (normas,
+% sanciones, comunicados) se discuten en Impacto y no figuran aquí.
+%
+% Parte 1: académicas. Parte 2: técnicas. La segunda retrocede
+% el contador para conservar un único número de tabla.
+%
+% REGLA DE tabularx: 5 columnas W, pesos suman 5.00.
+% ============================================================
+
+\begin{table*}[!tp]
+\centering
+\caption{Matriz de revisi\'on de trabajos relacionados. Los valores est\'an
+transcritos de la fuente. Las tareas, conjuntos y sistemas evaluados
+difieren, por lo que la comparaci\'on directa requiere cautela.}
+\label{tab:matriz}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}
+    P{1.9cm}
+    >{\centering\arraybackslash}p{0.6cm}
+    W{0.95}
+    W{0.95}
+    W{0.85}
+    W{1.15}
+    W{1.10}
+  @{}}
+\toprule
+\textbf{Referencia} & \textbf{A\~no} & \textbf{Problema} &
+\textbf{M\'etodo} & \textbf{Datos / entorno} &
+\textbf{Hallazgo principal} & \textbf{Limitaci\'on}\\
+\midrule
+
+Buolamwini y Gebru \cite{buolamwini_gendershades_2018} & 2018 &
+Disparidad de exactitud por sexo y tono de piel en sistemas faciales
+comerciales &
+Auditor\'ia externa de tres servicios comerciales con an\'alisis
+interseccional y escala de Fitzpatrick &
+Conjunto propio de 1\,270 rostros de parlamentarios de seis pa\'ises,
+equilibrado por sexo y tono de piel &
+Error m\'aximo de 34.7\,\% en mujeres de piel oscura frente a 0.8\,\% en
+hombres de piel clara &
+Eval\'ua clasificaci\'on de sexo, no identificaci\'on; etiquetado binario;
+retratos oficiales en condiciones controladas
+\\
+\addlinespace[3pt]
+
+Raji y Buolamwini \cite{raji_actionable_2019} & 2019 &
+Efecto de publicar resultados de auditor\'ia sobre el comportamiento de los
+proveedores &
+Reauditor\'ia de proveedores se\~nalados p\'ublicamente y de proveedores no
+se\~nalados &
+Mismo conjunto de referencia; cinco servicios comerciales &
+Los proveedores se\~nalados redujeron sus brechas de error; los no
+se\~nalados mostraron brechas mayores \pct &
+Misma tarea de clasificaci\'on de sexo; ventana temporal corta; no
+establece causalidad estricta
+\\
+\addlinespace[3pt]
+
+Sharif et al. \cite{sharif_accessorize_2016} & 2016 &
+Evasi\'on y suplantaci\'on f\'isica de sistemas de reconocimiento facial &
+Optimizaci\'on de perturbaciones adversarias impresas sobre marcos de
+anteojos &
+Modelos de redes profundas en caja blanca y un servicio comercial en caja
+negra \pct &
+Anteojos f\'isicos permiten evadir la identificaci\'on o suplantar a otra
+persona con alta tasa de \'exito \pct &
+Condiciones de captura controladas; no eval\'ua sistemas con detecci\'on de
+ataques de presentaci\'on \pct
+\\
+\addlinespace[3pt]
+
+Shan et al. \cite{shan_fawkes_2020} & 2020 &
+Entrenamiento no autorizado de modelos de reconocimiento con fotos
+p\'ublicas &
+Perturbaciones imperceptibles aplicadas por el usuario antes de publicar
+sus fotos &
+Servicios comerciales de reconocimiento y modelos entrenados por los
+autores &
+Protecci\'on superior al 95\,\% frente a los modelos evaluados, seg\'un los
+autores \pct &
+Supone un atacante que no se adapta; trabajos posteriores reportan
+modelos que anulan la protecci\'on
+\\
+\addlinespace[3pt]
+
+Drozdowski et al. \cite{drozdowski_bias_2020} & 2020 &
+Sesgo demogr\'afico en sistemas biom\'etricos en general &
+Revisi\'on de literatura sobre rostro, huella, iris y otras modalidades &
+Estudios publicados hasta 2020 &
+El sesgo est\'a documentado, pero las m\'etricas y protocolos son
+heterog\'eneos; propone una agenda de investigaci\'on &
+No aporta experimentos propios; anterior a la generaci\'on actual de
+modelos
+\\
+
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+
+% ============================================================
+% PARTE 2 DE 2 — el contador retrocede para mantener un número.
+% ============================================================
+\begin{table*}[!tp]
+\addtocounter{table}{-1}
+\centering
+\caption{Matriz de revisi\'on de trabajos relacionados (continuaci\'on).}
+\label{tab:matriz-cont}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}
+    P{1.9cm}
+    >{\centering\arraybackslash}p{0.6cm}
+    W{0.95}
+    W{0.95}
+    W{0.85}
+    W{1.15}
+    W{1.10}
+  @{}}
+\toprule
+\textbf{Referencia} & \textbf{A\~no} & \textbf{Problema} &
+\textbf{M\'etodo} & \textbf{Datos / entorno} &
+\textbf{Hallazgo principal} & \textbf{Limitaci\'on}\\
+\midrule
+
+Grother et al. \cite{grother_nistir8280_2019} & 2019 &
+Efectos demogr\'aficos en algoritmos de reconocimiento facial &
+Evaluaci\'on independiente de 189 algoritmos de 99 desarrolladores en
+verificaci\'on e identificaci\'on &
+18.27 millones de im\'agenes de 8.49 millones de personas, de registros
+gubernamentales de Estados Unidos &
+Tasas de falsos positivos entre 10 y m\'as de 100 veces mayores seg\'un
+el grupo demogr\'afico; la magnitud var\'ia mucho entre algoritmos &
+Im\'agenes de calidad administrativa, no de c\'amaras en espacio
+p\'ublico; no eval\'ua el sistema completo desplegado
+\\
+\addlinespace[3pt]
+
+Garvie et al. \cite{garvie_perpetual_2016} & 2016 &
+Uso policial del reconocimiento facial sin regulaci\'on &
+Solicitudes de acceso a informaci\'on p\'ublica a agencias policiales y
+an\'alisis de pol\'iticas &
+Agencias policiales de Estados Unidos &
+Unos 117 millones de adultos estadounidenses figuran en redes de
+reconocimiento facial policial &
+Centrado en Estados Unidos; datos previos a la expansi\'on de servicios
+como los de extracci\'on masiva de fotos de redes sociales
+\\
+\addlinespace[3pt]
+
+Fussey y Murray \cite{fussey_essex_2019} & 2019 &
+Legalidad y exactitud del reconocimiento facial en vivo en espacio
+p\'ublico &
+Observaci\'on independiente de pruebas operativas y an\'alisis de derechos
+humanos &
+Pruebas de la Polic\'ia Metropolitana de Londres &
+De 42 coincidencias generadas, solo 8 se verificaron como correctas \pct &
+Muestra peque\~na de despliegues; acceso limitado a datos t\'ecnicos del
+proveedor
+\\
+
+\bottomrule
+\end{tabularx}
+\begin{minipage}{\textwidth}
+\vspace{3pt}
+\footnotesize
+\textit{Nota.} Las fuentes de actualidad ---la Ley 8968 de Costa Rica, el
+Reglamento Europeo de Inteligencia Artificial y las sanciones y casos de
+detenci\'on err\'onea documentados--- no figuran en esta tabla, dado que no
+reportan un m\'etodo ni un hallazgo emp\'irico comparable. Se discuten en la
+secci\'on de impacto.
+\end{minipage}
+\end{table*}

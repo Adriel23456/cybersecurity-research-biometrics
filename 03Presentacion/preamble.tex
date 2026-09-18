@@ -1,0 +1,155 @@
+% ============================================================
+% preamble.tex — configuración de la presentación
+% ============================================================
+
+% ---------- Idioma y fuentes ----------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-noquoting,es-nodecimaldot,es-lcroman,es-noshorthands]{babel}
+\usepackage[autostyle]{csquotes}
+
+% ---------- Gráficos y tablas ----------
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{array}
+\tikzset{
+  etapa/.style={fill=#1, text=white, rounded corners=2pt,
+                minimum height=0.7cm, align=center,
+                font=\scriptsize\bfseries}
+}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ---------- Colores ----------
+\definecolor{tecnavy}{RGB}{31,56,100}
+\definecolor{tecsteel}{RGB}{46,85,150}
+\definecolor{teclight}{RGB}{214,227,243}
+\definecolor{tecrule}{RGB}{155,184,216}
+\definecolor{boxbg}{RGB}{242,246,252}
+\definecolor{labelgray}{RGB}{120,120,120}
+\definecolor{blockred}{RGB}{170,45,45}
+\definecolor{okgreen}{RGB}{22,120,70}
+\definecolor{notaverde}{RGB}{22,110,60}
+\definecolor{decisionambar}{RGB}{170,110,10}
+
+% ---------- Tema ----------
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg=tecsteel}
+\setbeamercolor{frametitle}{fg=white,bg=tecnavy}
+\setbeamercolor{framesubtitle}{fg=teclight}
+\setbeamercolor{section in toc}{fg=tecnavy}
+\setbeamercolor{block title}{fg=white,bg=tecsteel}
+\setbeamercolor{block body}{fg=black,bg=boxbg}
+\setbeamercolor{block title alerted}{fg=white,bg=blockred}
+\setbeamercolor{block body alerted}{fg=black,bg=red!4}
+\setbeamercolor{block title example}{fg=white,bg=okgreen}
+\setbeamercolor{block body example}{fg=black,bg=green!4}
+\setbeamercolor{footleft}{fg=white,bg=tecnavy}
+\setbeamercolor{footmid}{fg=tecnavy,bg=teclight}
+\setbeamercolor{footright}{fg=white,bg=tecsteel}
+
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\footnotesize,series=\mdseries}
+\setbeamerfont{block title}{size=\small,series=\bfseries}
+
+\setbeamercolor{framerule}{bg=tecsteel}
+
+\makeatletter
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0.22cm,leftskip=0.3cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle
+    \ifx\insertframesubtitle\@empty\else
+      \par{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}%
+        \insertframesubtitle}%
+    \fi
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.5pt,dp=0pt]{framerule}%
+  \end{beamercolorbox}%
+  \vspace{0.1cm}}
+\makeatother
+
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{\tiny%
+  \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.4ex,dp=1ex,left,leftskip=1em]{footleft}%
+    \docCode\ \textbullet\ Grupo \docGroup
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.55\paperwidth,ht=2.4ex,dp=1ex,center]{footmid}%
+    \docShortTitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.4ex,dp=1ex,right,rightskip=1em]{footright}%
+    \insertframenumber\,/\,\inserttotalframenumber
+  \end{beamercolorbox}}}
+
+\AtBeginSection[]{%
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection,hideallsubsections]
+  \end{frame}}
+
+\hypersetup{
+  pdftitle={Tema 9 - Reconocimiento facial, biometria y vigilancia},
+  pdfsubject={\docCourse}
+}
+
+% ---------- Entrada segura ----------
+\newcommand{\cajaarchivofaltante}[1]{%
+  \begin{center}
+  \fcolorbox{red!60!black}{red!5}{\ttfamily\scriptsize ARCHIVO FALTANTE: \detokenize{#1}}
+  \end{center}}
+
+\newcommand{\cajaimagenfaltante}[1]{%
+  \begingroup\setlength{\fboxsep}{0pt}%
+  \fcolorbox{tecrule}{boxbg}{%
+    \parbox[c][1.2cm][c]{2.6cm}{\centering\ttfamily\tiny
+      IMAGEN NO ENCONTRADA\\[2pt]\detokenize{#1}}}%
+  \endgroup}
+
+\newcommand{\safeinput}[1]{%
+  \IfFileExists{#1.tex}{\input{#1}}{%
+    \PackageWarning{tecslides}{Falta el archivo #1.tex}%
+    \begin{frame}\cajaarchivofaltante{#1.tex}\end{frame}}}
+
+\newcommand{\safeimage}[2][height=1.2cm]{%
+  \IfFileExists{#2}{\includegraphics[#1]{#2}}{%
+    \IfFileExists{img/#2}{\includegraphics[#1]{img/#2}}{%
+      \PackageWarning{tecslides}{Falta la imagen #2}%
+      \cajaimagenfaltante{#2}}}}
+
+% ---------- Elementos visuales ----------
+% \cifra{valor}{descripción}
+\newcommand{\cifra}[2]{%
+  \begin{center}
+    {\Huge\bfseries\color{tecnavy}#1}\\[2pt]
+    {\scriptsize\color{labelgray}#2}
+  \end{center}}
+
+% ---------- Marcadores de redacción ----------
+\newcommand{\pc}[1]{%
+  \texorpdfstring{\textcolor{red}{\textbf{[POR COMPLETAR: #1]}}}%
+                 {[POR COMPLETAR: #1]}}
+\newcommand{\razon}[1]{%
+  \texorpdfstring{\textcolor{notaverde}{\scriptsize\textit{[RAZ\'ON: #1]}}}%
+                 {[RAZON: #1]}}
+\newcommand{\decidir}[1]{%
+  \texorpdfstring{\textcolor{decisionambar}{\scriptsize\textbf{[DECIDIR: #1]}}}%
+                 {[DECIDIR: #1]}}
+\newcommand{\pct}{\textcolor{red}{\textbf{[?]}}}
+
+% ---------- Apagado de marcadores (descomentar antes de presentar) ----------
+%\renewcommand{\pc}[1]{}
+%\renewcommand{\razon}[1]{}
+%\renewcommand{\decidir}[1]{}
+%\renewcommand{\pct}{}

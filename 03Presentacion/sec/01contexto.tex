@@ -1,0 +1,73 @@
+% ============================================================
+% sec/01contexto.tex — Contexto (aprox. 2 min)
+% ============================================================
+\section{Contexto}
+
+\begin{frame}{?`Qu\'e es el reconocimiento facial?}
+  \framesubtitle{Un rostro se convierte en un vector y la decisi\'on es un umbral}
+  \decidir{Expone: nombre \textbullet\ aprox. 2 min toda la secci\'on}
+
+  \vspace{0.2cm}
+  \begin{center}
+  \begin{tikzpicture}[
+      paso/.style={draw=tecsteel, fill=boxbg, rounded corners=2pt,
+                   text width=1.75cm, minimum height=1cm, align=center,
+                   font=\scriptsize},
+      clave/.style={paso, fill=tecnavy, text=white, draw=tecnavy},
+      flecha/.style={-{Stealth[length=2mm]}, tecsteel, thick},
+      node distance=0.35cm]
+    \node[paso] (a) {Captura};
+    \node[paso, right=of a] (b) {Detecci\'on del rostro};
+    \node[paso, right=of b] (c) {Alineaci\'on};
+    \node[paso, right=of c] (d) {Representaci\'on (vector)};
+    \node[clave, right=of d] (e) {Distancia vs.\ umbral};
+    \node[paso, right=of e] (f) {Decisi\'on};
+    \foreach \x/\y in {a/b,b/c,c/d,d/e,e/f} \draw[flecha] (\x) -- (\y);
+  \end{tikzpicture}
+  \end{center}
+
+  \vspace{0.3cm}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Verificaci\'on (1:1)}
+        ?`Esta persona es quien dice ser?\\
+        {\scriptsize\color{labelgray}Desbloqueo del tel\'efono, control
+        fronterizo.}
+      \end{block}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Identificaci\'on (1:N)}
+        ?`Qui\'en es esta persona?\\
+        {\scriptsize\color{labelgray}B\'usqueda contra listas de vigilancia
+        en espacio p\'ublico.}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{?`Por qu\'e importa hoy?}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \begin{itemize}\setlength{\itemsep}{6pt}
+        \item Del tel\'efono al espacio p\'ublico: c\'amaras que identifican
+              sin interacci\'on ni consentimiento.
+        \item Un rasgo biom\'etrico no se revoca como una contrase\~na.
+        \item El error no es abstracto: un falso positivo recae sobre una
+              persona concreta.
+        \item Regulaci\'on dispar: la UE restringe la identificaci\'on
+              biom\'etrica remota; Costa Rica se rige por la Ley 8968
+              (2011).
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{Tr\'iada CID}
+        \scriptsize
+        \textbf{C} --- Una base de rostros expuesta filtra un dato
+        irrevocable.\\[3pt]
+        \textbf{I} --- Una falsa coincidencia o una suplantaci\'on alteran
+        la identidad atribuida.\\[3pt]
+        \textbf{D} --- Un falso rechazo niega el acceso a un servicio.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}

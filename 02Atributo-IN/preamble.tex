@@ -1,0 +1,127 @@
+% ============================================================
+% preamble.tex — configuración compartida (sin \documentclass)
+% ============================================================
+
+% ---------- Idioma y fuentes ----------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-noquoting,es-nodecimaldot,es-tabla,es-lcroman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{microtype}
+
+% ---------- Matemática ----------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{per-mode=symbol,range-units=single}
+
+% ---------- Colores ----------
+\usepackage{xcolor}
+\definecolor{tecnavy}{RGB}{31,56,100}
+\definecolor{tecsteel}{RGB}{46,85,150}
+\definecolor{teclight}{RGB}{214,227,243}
+\definecolor{tecrule}{RGB}{155,184,216}
+\definecolor{boxbg}{RGB}{242,246,252}
+\definecolor{labelgray}{RGB}{120,120,120}
+\definecolor{notaverde}{RGB}{22,110,60}
+\definecolor{decisionambar}{RGB}{170,110,10}
+
+% ---------- Gráficos ----------
+\usepackage{graphicx}
+\graphicspath{{img/}{figures/}{./}}
+\usepackage{tikz}
+\usetikzlibrary{calc,babel}
+
+% ---------- Tablas y listas ----------
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[justification=centering]{caption}
+\usepackage{enumitem}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.15}
+\setlist[itemize]{leftmargin=*,noitemsep,topsep=2pt}
+\setlist[enumerate]{leftmargin=*,noitemsep,topsep=2pt}
+
+% ---------- Página ----------
+\usepackage[a4paper,margin=1in,headheight=15pt]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\textsc{\docCode}}
+\fancyhead[R]{\footnotesize\docShortTitle}
+\fancyfoot[C]{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- Enlaces ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=tecnavy,
+  urlcolor=tecsteel,
+  pdftitle={Atributo de Investigaci\'on (IN) - Tema 9},
+  pdfauthor={\docAuthors},
+  pdfsubject={\docCourse}
+}
+
+% ---------- Entrada segura ----------
+\newcommand{\cajaarchivofaltante}[1]{%
+  \par\medskip\noindent
+  \fcolorbox{red!60!black}{red!5}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+      \centering\ttfamily\small ARCHIVO FALTANTE: \detokenize{#1}}}%
+  \par\medskip}
+
+\newcommand{\cajaimagenfaltante}[1]{%
+  \begingroup\setlength{\fboxsep}{0pt}%
+  \fcolorbox{tecrule}{boxbg}{%
+    \parbox[c][2.8cm][c]{6cm}{\centering\ttfamily\scriptsize
+      IMAGEN NO ENCONTRADA\\[3pt]\detokenize{#1}}}%
+  \endgroup}
+
+\newcommand{\safeinput}[1]{%
+  \IfFileExists{#1.tex}{\input{#1}}{%
+    \PackageWarning{tecdoc}{Falta el archivo de secci\'on #1.tex}%
+    \cajaarchivofaltante{#1.tex}}}
+
+\newcommand{\safeimage}[2][width=0.75\linewidth]{%
+  \IfFileExists{#2}{\includegraphics[#1]{#2}}{%
+    \IfFileExists{img/#2}{\includegraphics[#1]{img/#2}}{%
+      \PackageWarning{tecdoc}{Falta la imagen #2}%
+      \cajaimagenfaltante{#2}}}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% ---------- Bloques del atributo IN ----------
+% \indicadorIN{código}{texto literal del indicador}
+% La respuesta del grupo se escribe inmediatamente después.
+\newcommand{\indicadorIN}[2]{%
+  \subsection{Indicador #1}
+  \noindent\fcolorbox{tecrule}{boxbg}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+      \vspace{3pt}\textbf{\color{tecnavy}Texto del indicador.}\ #2\vspace{3pt}}}%
+  \par\medskip\noindent
+  \textbf{\color{tecnavy}Respuesta del grupo.}\ }
+
+% ---------- Marcadores de redacción ----------
+\newcommand{\pc}[1]{%
+  \texorpdfstring{\textcolor{red}{\textbf{[POR COMPLETAR: #1]}}}%
+                 {[POR COMPLETAR: #1]}}
+\newcommand{\razon}[1]{%
+  \texorpdfstring{\textcolor{notaverde}{\small\textit{[RAZ\'ON: #1]}}}%
+                 {[RAZON: #1]}}
+\newcommand{\decidir}[1]{%
+  \texorpdfstring{\textcolor{decisionambar}{\small\textbf{[DECIDIR: #1]}}}%
+                 {[DECIDIR: #1]}}
+
+% ---------- Apagado de marcadores (descomentar antes de entregar) ----------
+%\renewcommand{\pc}[1]{}
+%\renewcommand{\razon}[1]{}
+%\renewcommand{\decidir}[1]{}

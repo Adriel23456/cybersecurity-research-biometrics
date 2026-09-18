@@ -1,0 +1,64 @@
+% ============================================================
+% Atributo_IN_grupo4.tex — archivo principal
+% Build: latexmk -pdf Atributo_IN_grupo4.tex
+% ============================================================
+\documentclass[12pt,a4paper]{article}
+
+% ---------- Metadatos (editar solo este bloque) ----------
+\newcommand{\docInstitute}{Instituto Tecnol\'ogico de Costa Rica}
+\newcommand{\docSchool}{Escuela de Ingenier\'ia en Computadores}
+\newcommand{\docCourse}{Seguridad de la Informaci\'on}
+\newcommand{\docCode}{CE-1115}
+\newcommand{\docGroup}{4}
+\newcommand{\docTitle}{Atributo de Investigaci\'on (IN)}
+\newcommand{\docKicker}{Revisi\'on de literatura \textbullet\ Grupo \docGroup}
+\newcommand{\docSubtitle}{Documento complementario al informe de revisi\'on de literatura}
+\newcommand{\docTagline}{Tema 9: Reconocimiento facial, biometr\'ia y vigilancia}
+\newcommand{\docReportTitle}{Reconocimiento Facial en Espacios P\'ublicos:
+  Sesgo Algor\'itmico, Riesgos de Seguridad y el Marco Costarricense de
+  Protecci\'on de Datos frente a Casos Internacionales}
+\newcommand{\docDate}{\pc{fecha de entrega}}
+
+\newcommand{\docAuthorA}{Meibel Ceciliano}
+\newcommand{\docIDA}{\pc{carnet}}
+\newcommand{\docAuthorB}{Carlos Contreras}
+\newcommand{\docIDB}{\pc{carnet}}
+\newcommand{\docAuthorC}{Ludwin Ramos}
+\newcommand{\docIDC}{\pc{carnet}}
+\newcommand{\docAuthorD}{Henry Nu\~nez}
+\newcommand{\docIDD}{\pc{carnet}}
+\newcommand{\docAuthorE}{Adriel S. Chaves Salazar}
+\newcommand{\docIDE}{2021031465}
+\newcommand{\docAuthors}{\docAuthorA, \docAuthorB, \docAuthorC, \docAuthorD, \docAuthorE}
+
+\newcommand{\docProfessor}{MSc. Andr\'es Vargas Rivera}
+\newcommand{\docSemester}{II Semestre, 2026}
+\newcommand{\docPlace}{Cartago, Costa Rica}
+\newcommand{\docShortTitle}{Atributo IN --- Tema 9}
+
+\input{preamble}
+
+\begin{document}
+
+\safeinput{sec/00cover}
+
+% ---------- Índice ----------
+\pagenumbering{roman}
+\begingroup
+  \singlespacing
+  \hypersetup{linkcolor=black}
+  \setcounter{tocdepth}{2}
+  \tableofcontents
+  \thispagestyle{plain}
+\endgroup
+\newpage
+
+% ---------- Cuerpo ----------
+\pagenumbering{arabic}
+\justifying
+
+\safeinput{sec/01cuerpo}
+\safeinput{sec/02definicion}
+\safeinput{sec/03bloques}
+
+\end{document}

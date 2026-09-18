@@ -1,0 +1,50 @@
+% ============================================================
+% Presentacion_grupo4.tex — archivo principal
+% Build: latexmk -pdf Presentacion_grupo4.tex
+%
+% Presupuesto de tiempo (mínimo 15 min):
+%   1. Contexto ............ aprox. 2 min
+%   2. Búsqueda ............ aprox. 2 min
+%   3. Síntesis cruzada .... aprox. 5-6 min
+%   4. Demo ................ aprox. 5-6 min
+%   5. Conclusiones ........ aprox. 1-2 min
+% ============================================================
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% ---------- Metadatos (editar solo este bloque) ----------
+\newcommand{\docInstitute}{Instituto Tecnol\'ogico de Costa Rica}
+\newcommand{\docSchool}{Escuela de Ingenier\'ia en Computadores}
+\newcommand{\docCourse}{Seguridad de la Informaci\'on}
+\newcommand{\docCode}{CE-1115}
+\newcommand{\docGroup}{4}
+\newcommand{\docTitle}{Reconocimiento Facial en Espacios P\'ublicos:
+  Sesgo Algor\'itmico, Riesgos de Seguridad y el Marco Costarricense de
+  Protecci\'on de Datos frente a Casos Internacionales}
+\newcommand{\docTagline}{Tema 9: Reconocimiento facial, biometr\'ia y vigilancia}
+\newcommand{\docShortTitle}{Reconocimiento facial, biometr\'ia y vigilancia}
+\newcommand{\docDate}{\pc{fecha de presentaci\'on}}
+\newcommand{\docProfessor}{MSc. Andr\'es Vargas Rivera}
+\newcommand{\docAuthors}{Meibel Ceciliano \textbullet\ Carlos Contreras
+  \textbullet\ Ludwin Ramos \textbullet\ Henry Nu\~nez
+  \textbullet\ Adriel S. Chaves Salazar}
+
+\input{preamble}
+
+\begin{document}
+
+\safeinput{sec/00portada}
+
+\begin{frame}{Agenda}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\safeinput{sec/01contexto}
+\safeinput{sec/02busqueda}
+\safeinput{sec/03sintesis}
+\safeinput{sec/04demo}
+\safeinput{sec/05conclusiones}
+
+\appendix
+\safeinput{sec/90respaldo}
+
+\end{document}

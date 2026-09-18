@@ -1,0 +1,17 @@
+Ahorita aqui no tenemos nada lol...
+
+Tema 9: Reconocimiento facial, biometr´ıa y vigilancia
+Ambito. ´ El debate t´ecnico-legal del reconocimiento facial en espacios p´ublicos; sesgos algor´ıtmicos documentados en la literatura; marco costarricense (Ley 8968) frente a casos internacionales.
+Aporte al curso. Retoma la Clase 3 (privacidad) y anticipa la biometr´ıa que se ve m´as
+adelante en el curso (Clase 16).
+Demo posible. Usar una librer´ıa de reconocimiento facial de c´odigo abierto sobre una foto
+o video propio (con consentimiento), mostrando el mecanismo y su margen de error.
+
+
+
+
+Demo o ejemplo pr´actico — dentro de los 15 minutos m´ınimos (orientativo 5–8
+min). Puede ser en vivo (herramienta, tecnolog´ıa o experimento identificado en la investigaci´on) o en video si el ejemplo no puede correrse en el aula (p. ej. un deepfake generado
+previamente, una demo de un venue acad´emico). Entorno propio (VM, contenedor, lab del
+curso, nube educativa). No atacar terceros sin autorizaci´on escrita; no usar datos personales
+reales.
