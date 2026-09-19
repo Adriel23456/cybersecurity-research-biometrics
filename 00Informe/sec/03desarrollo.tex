@@ -1,13 +1,62 @@
 % ============================================================
 % sec/03desarrollo.tex
 %
-% S´ıntesis cruzada de los cinco (o m´as) trabajos: qu´e proponen, qu´e m´etodos usan, qu´e encuentran. Incluye la matriz de revisi´on (tabla con:
-% referencia, problema, m´etodo, datos o entorno si aplica, hallazgo principal, limitaci´on).
+% Síntesis cruzada de los cinco (o más) trabajos: qué proponen,
+% qué métodos usan, qué encuentran. Incluye la matriz de revisión
+% (tabla con: referencia, problema, método, datos o entorno si
+% aplica, hallazgo principal, limitación).
 % ============================================================
 \section{Desarrollo}
 \label{sec:desarrollo}
 
 \subsection{Estado del arte}
 \label{subsec:estadodelarte}
+
+La Tabla~\ref{tab:matriz} resume los cinco trabajos principales. Se
+organizan en tres ejes: sesgo demogr\'afico, integridad del sistema frente
+a ataques, y despliegue y regulaci\'on en espacio p\'ublico.
+
+\textit{Sesgo demogr\'afico.} La evaluaci\'on del NIST
+\cite{grother_nistir8280_2019} midi\'o 189 algoritmos de 99 desarrolladores
+sobre 18.27 millones de im\'agenes. Encontr\'o que los falsos positivos
+var\'ian entre 10 y m\'as de 100 veces seg\'un el grupo demogr\'afico,
+mientras que los falsos negativos rara vez superan un factor de 3. Tambi\'en
+mostr\'o que la magnitud depende del algoritmo: los m\'as precisos presentan
+diferenciales menores. La revisi\'on de Kotwal y Marcel
+\cite{kotwal_fairness_2026} confirma que el problema persiste en modelos
+recientes. Atribuye las disparidades a la mezcla de datos de entrenamiento,
+tono de piel, calidad de imagen y factores no demogr\'aficos como el peinado
+o el maquillaje, y advierte que balancear los datos no basta para
+eliminarlas.
+
+\textit{Integridad frente a ataques.} Vakhshiteh et al.
+\cite{vakhshiteh_adversarial_2021} clasifican los ataques adversarios en
+cuatro orientaciones: contra el modelo, f\'isicos (anteojos impresos, luz
+infrarroja o proyectada), de desidentificaci\'on y geom\'etricos. Las
+defensas se agrupan en tres estrategias: alterar la entrada, modificar la
+red o a\~nadir una red detectora. Concluyen que cada defensa cubre ataques
+espec\'ificos y que falta un banco de pruebas com\'un. Estos ataques
+comprometen la integridad de la identidad que el sistema atribuye a una
+persona.
+
+\textit{Despliegue y regulaci\'on.} Fussey et al.
+\cite{fussey_assisted_2020} observaron los pilotos policiales de Gales y
+Londres. En las seis operaciones londinenses, de 43 alertas los operadores
+juzgaron cre\'ibles 27, pero solo 9 se verificaron como correctas. El
+resultado depend\'ia del umbral, de la lista de vigilancia y de la
+discreci\'on humana, por lo que proponen hablar de reconocimiento
+\emph{asistido} y no \emph{automatizado}. Almeida et al.
+\cite{almeida_ethics_2022} comparan EE.\,UU., la UE y el Reino Unido. El
+reglamento europeo trata la biometr\'ia como dato de categor\'ia especial y
+exige evaluaciones de impacto, pero exceptúa la aplicaci\'on de la ley; en
+EE.\,UU. no existe una ley federal equivalente.
+
+En conjunto, los cinco trabajos se\~nalan el umbral de decisi\'on como el
+punto donde el error t\'ecnico se convierte en consecuencia sobre una
+persona. Tambi\'en muestran que la exactitud medida en laboratorio no
+garantiza el desempe\~no en campo. En Am\'erica Latina, el uso policial
+descansa sobre excepciones generales de las leyes de datos
+\cite{franqueira_reconhecimento_2021}, un vac\'io que se discute en la
+Secci\'on~\ref{sec:discusion}.
 
 \safeinput{tab/matriz_revision}
