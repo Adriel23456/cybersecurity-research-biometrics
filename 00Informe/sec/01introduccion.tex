@@ -6,4 +6,43 @@
 \section{Introducción}
 \label{sec:introduccion}
 
-dadasasdasdas
+El reconocimiento facial ha pasado, en poco más de una d\'ecada, de ser
+una tecnolog\'ia experimental a un componente cotidiano de control de
+acceso, verificaci\'on de identidad y vigilancia p\'ublica. Aeropuertos,
+bancos, tel\'efonos m\'oviles y cuerpos policiales lo han adoptado a
+gran escala, impulsados por avances en aprendizaje profundo que han
+llevado la exactitud de los mejores algoritmos a niveles cercanos al
+100\,\% en condiciones controladas \cite{grother_nistir8280_2019}. Sin
+embargo, ese mismo despliegue masivo ha expuesto un problema de
+seguridad de la informaci\'on que va m\'as all\'a del rendimiento
+t\'ecnico: la posibilidad de que un sistema biom\'etrico identifique
+err\'oneamente a una persona, o de que sea usado para vigilarla sin su
+conocimiento ni consentimiento, compromete simult\'aneamente la
+integridad de la identidad atribuida a un individuo y su derecho a la
+privacidad.
+
+El problema es emergente en un doble sentido. T\'ecnicamente, porque
+la evidencia acumulada muestra que la precisi\'on de estos sistemas no
+es uniforme: var\'ia de forma significativa seg\'un g\'enero, edad y
+origen \'etnico o geogr\'afico
+\cite{grother_nistir8280_2019,kotwal_fairness_2026}, y puede ser
+deliberadamente degradada mediante ataques adversarios dise\~nados
+para enga\~nar al modelo \cite{vakhshiteh_adversarial_2021}.
+Normativamente, porque su adopci\'on por parte de fuerzas policiales
+ha superado la capacidad de los marcos regulatorios existentes para
+delimitar su uso, generando pr\'acticas de vigilancia con supervisi\'on
+judicial d\'ebil o inexistente
+\cite{fussey_assisted_2020,almeida_ethics_2022}.
+
+Este trabajo aborda el tema desde la tr\'iada CID: la
+\emph{confidencialidad} de los datos biom\'etricos recolectados, la
+\emph{integridad} de las decisiones de identificaci\'on que el sistema
+entrega a un operador humano, y la \emph{disponibilidad} entendida
+como la capacidad del sistema de servir por igual a toda la poblaci\'on
+sobre la que se aplica. A partir de la revisi\'on de cinco fuentes que
+combinan un informe t\'ecnico de referencia (NIST), estudios emp\'iricos
+de despliegue policial, an\'alisis regulatorio comparado y encuestas
+acad\'emicas sobre sesgo y ataques adversarios, se construye un
+panorama del estado del arte que conecta directamente con el debate de
+privacidad discutido en el curso y anticipa los contenidos de
+biometr\'ia que se abordar\'an m\'as adelante.

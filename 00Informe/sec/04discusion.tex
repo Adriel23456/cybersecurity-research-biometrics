@@ -8,4 +8,80 @@
 \section{Discusión}
 \label{sec:discusion}
 
-adasdasdasdasdasdasdas
+\subsection{Contradicciones y vacíos entre los trabajos}
+
+Los cinco trabajos no siempre coinciden entre sí. El NIST
+\cite{grother_nistir8280_2019} trata el sesgo demográfico como un
+problema algorítmico medible, pero Kotwal y Marcel
+\cite{kotwal_fairness_2026} muestran que balancear los datos de
+entrenamiento no es suficiente, ya que atributos no demográficos como
+el peinado, el maquillaje y la reflectancia de la piel explican buena
+parte del error observado. Esto revela un vacío importante: todavía
+no está claro cuánto del sesgo medido corresponde a un sesgo social
+codificado en los datos y cuánto corresponde a una limitación de
+percepción visual del propio modelo.
+
+Un segundo vacío surge al comparar a Fussey et al.
+\cite{fussey_assisted_2020} con el informe del NIST. Mientras la
+literatura técnica evalúa el algoritmo de forma aislada, el estudio de
+campo realizado en Londres muestra que el eslabón más débil del
+sistema fue el operador humano, pues de 43 alertas generadas los
+operadores juzgaron creíbles 27, pero solo 9 se verificaron como
+correctas. Ninguna de las cinco fuentes conecta explícitamente ambos
+niveles de análisis, es decir, el desempeño del algoritmo por un lado
+y el desempeño del sistema sociotécnico completo por el otro.
+
+Finalmente, Vakhshiteh et al. \cite{vakhshiteh_adversarial_2021}
+introducen un riesgo que ni los estudios de sesgo ni los estudios de
+despliegue policial contemplan, que es la manipulación deliberada del
+insumo mediante ataques adversarios. En conjunto, las cinco fuentes
+muestran que existen al menos tres fuentes de error distintas y, en su
+mayoría, estudiadas por separado: el sesgo estadístico del modelo, la
+discreción humana deficiente y el ataque intencional al sistema.
+
+\subsection{Conexión con conceptos del curso}
+
+\textbf{Tríada CID:} Los tres pilares de la seguridad de la
+información se ven comprometidos en mayor o menor medida. La
+confidencialidad se ve afectada en casos como el descrito por Almeida
+et al. \cite{almeida_ethics_2022}, donde una escuela sueca almacenó
+rostros de menores de edad sin contar con una base legal válida. La
+integridad es el hilo conductor de toda la discusión, ya que tanto el
+sesgo demográfico \cite{grother_nistir8280_2019,kotwal_fairness_2026}
+como los ataques adversarios \cite{vakhshiteh_adversarial_2021} son,
+en el fondo, formas distintas de corromper la fidelidad de una
+identificación. La disponibilidad también se ve comprometida cuando
+un umbral mal calibrado satura la capacidad operativa del sistema. Un
+ejemplo claro es el operativo de la Champions League analizado por
+Fussey et al., donde 2\,632 alertas produjeron apenas un 3\,\% de
+coincidencias consideradas creíbles \cite{fussey_assisted_2020}.
+
+\textbf{Fallos seguros (Clase 4):} El principio de fallos seguros
+establece que, ante la duda, el sistema debe negar el acceso por
+defecto. En los despliegues de Londres ocurrió justamente lo
+contrario, pues los operadores tendieron a ceder ante la sugerencia
+del algoritmo en lugar de descartarla por defecto
+\cite{fussey_assisted_2020}. El umbral de similitud es exactamente el
+punto de diseño donde debería aplicarse este principio, y el hecho de
+que su ajuste dependiera de la discreción de cada fuerza policial, y
+no de una regla técnica obligatoria, muestra que un principio con
+décadas de antigüedad sigue sin aplicarse de forma consistente en una
+tecnología de despliegue reciente.
+
+\textbf{Política de integridad (Clase 5):} Esta política exige que
+todo cambio o decisión relevante quede registrado en una bitácora
+auditable. Fussey et al. documentan justamente la ausencia de este
+control, pues la identidad de la mayoría de las personas interceptadas
+nunca se verificó de forma formal, razón por la cual los autores
+clasifican el resultado como no verificablemente correcto en lugar de
+correcto o incorrecto \cite{fussey_assisted_2020}. Se trata de un
+sistema que carece de una regla que exija auditar cada decisión, lo
+que impide atribuir responsabilidad tanto al algoritmo como al
+operador. Esto conecta directamente con la recomendación de Almeida et
+al. de exigir evaluaciones de impacto publicables
+\cite{almeida_ethics_2022}, ya que dicha evaluación es, en la
+práctica, el mecanismo de gestión de riesgos que exige la norma
+ISO/IEC 27001 vista en la Clase 5, aplicado específicamente a la
+biometría. Su ausencia generalizada explica por qué el vacío de
+auditoría persiste todavía varios años después del primer informe del
+NIST.
