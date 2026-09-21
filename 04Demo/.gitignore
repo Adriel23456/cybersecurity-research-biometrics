@@ -1,0 +1,15 @@
+# Entorno virtual de Python (pesado, local, no se sube)
+.venv/
+__pycache__/
+*.pyc
+
+# Fotos de rostros: NO se suben al repositorio (privacidad)
+faces/
+*.jpg
+*.jpeg
+*.png
+
+# Video de la demo (pesa mucho; se comparte por enlace, no en el repo)
+*.mp4
+*.mov
+*.avi
