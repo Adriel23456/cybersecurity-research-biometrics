@@ -2,7 +2,78 @@
 % sec/03bloques.tex
 % Bloques IN1, IN2, . . . , IN5 (en ese orden): primero el texto literal del indicador; debajo, la respuesta del grupo con ejemplos concretos (secciones del informe, matriz de papers, demo, decisiones, limitaciones).
 % ============================================================
-\section{Bloques}
+\section{Indicadores}
 
-asdasdasdasdasdasadasdasdas
-asdasdasdasdasdasadasdasdas
+\subsection{IN1. Identifica el problema complejo de ingeniería a investigar}
+
+El problema investigado es el despliegue operativo masivo de sistemas de reconocimiento facial tanto en espacios públicos como privados, sin que su precisión sea uniforme entre grupos demográficos y en aspectos de percepción visual, además de sin mecanismos de auditoría que registren el fundamento de cada identificación realizada, y sin marcos normativos estrictos que regulen explícitamente el uso de datos biométricos para este fin.
+
+El problema descrito no es hipotético ni es algo que se piense a futuro, en el informe se exponen casos reales, en Estados Unidos el uso de Clearview AI por cuerpos policiales produjo dos arrestos injustificados con nombre propio y fecha. El caso de Angela Lipps en julio de 2025, quien permaneció cinco meses presa por una identificación errónea, y el otro caso es el de Clarence Reid en Jefferson Parish, que terminó en un acuerdo económico de 200,000 dólares en junio de 2025. En Costa Rica, en mayo de 2026 la PRODHAB sancionó al Tribunal Supremo de Elecciones por comercializar datos biométricos sin habilitación legal expresa.
+
+Ahora bien, el problema importa ahora porque la adopción del reconocimiento facial en instituciones policiales y financieras está siendo adoptada sin una validación técnica rigurosa previa y sin su regulación respectiva, trasladando errores algorítmicos a decisiones con consecuencias legales sobre personas que en este caso son inocentes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{IN2. Diseña una propuesta de investigación}
+
+Con base en el problema identificado y en los puntos claves de las fuentes consultadas, sobre el sesgo demográfico, la integridad frente a ataques y el Despliegue y regulación de estos sistemas, la investigación se orientó mediante tres preguntas centrales:
+
+\begin{enumerate} [leftmargin=1.5cm]
+    \item ¿En qué medida el sesgo demográfico en sistemas de reconocimiento facial afecta la integridad de las decisiones de identificación en operaciones reales?
+    \item ¿Qué ataques pueden comprometer deliberadamente la precisión de estos sistemas y qué defensas existen para mitigarlos?
+    \item ¿Qué marcos normativos regulan el uso de datos biométricos en espacios públicos, y qué vacíos presenta el marco legal en Costa Rica frente a casos internacionales?
+\end{enumerate}
+
+\subsubsection{Criterios de búsqueda y selección de fuentes}
+
+La búsqueda fue realizada por medio de Consensus, así como con Connected Papers para explorar el grafo de citación, y verificada con IEEE Xplore para confirmar autoría, medio de publicación y año. Las palabras clave utilizadas fueron: facial recognition, demographic bias, fairness, false match rate, false non-match rate, presentation attack, adversarial attacks, surveillance, policing, privacy y accountability.
+
+Se incluyeron fuentes con revisión por pares (IEEE, ACM, OUP, Springer) o informes técnicos con autoría y fecha identificables como el NIST, enfocadas en sesgo algorítmico, uso policial o robustez del sistema, publicadas entre 2019 y 2026, y con al menos un hallazgo o métrica reportada. Por otro lado, se excluyeron blogs sin autoría identificable, foros, Wikipedia y notas periodísticas sin fuente primaria verificable.
+
+\subsubsection{Alcance}
+
+El trabajo se limitó a cinco fuentes principales, que cubren tres ejes como ya se mencionó a la hora de plantear las preguntas guías: sesgo demográfico, integridad frente a ataques adversarios y despliegue y regulación en espacio público. Además, se complementaron con fuentes de actualidad para la sección de impacto, referidas a casos ocurridos en Estados Unidos y en Costa Rica, entre los años 2025 y 2026.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{IN3. Ejecuta la metodología del plan de investigación para la obtención de datos relevantes}
+
+\subsubsection{Lectura sistemática}
+
+El plan se ejecutó siguiendo las cinco fuentes seleccionadas. Cada referencia fue leída con el objetivo de entender el problema que aborda, el método que emplea, el entorno o datos sobre los que opera, el hallazgo principal y sus limitaciones. Esta lectura en primera parte fue independiente por fuente, sin embargo luego se realizó un acople o cruce intentando buscar coincidencias, puntos de contacto y contradicción entre los tres ejes mencionados en IN2.
+
+\subsubsection{Matriz de revisión}
+
+Como resultado de la lectura se obtuvo la Tabla I del informe, el cual desglosa las cinco fuentes en seis columnas: referencia, año, problema, método, datos o entorno, hallazgo principal y limitación. De esta forma permite comparar, por ejemplo, que mientras Grother et al. evalúan 189 algoritmos sobre 18,27 millones de imágenes y reportan que los falsos positivos varían entre 10 y más de 100 veces según el grupo demográfico, Kotwal y Marcel confirman que ese problema persiste en modelos recientes y que balancear los datos de entrenamiento no es suficiente para eliminarlo.
+
+\subsubsection{Demo práctica alineada a la lectura}
+
+Se ejecutaron dos actos con DeepFace usando el modelo ArcFace en un entorno local sobre Linux, utilizando fotografías propias de integrantes del grupo. El primer acto comparó pares de rostros y mostró cómo la misma distancia entre vectores produce decisiones distintas según dónde se fije el umbral, reproduciendo a escala pequeña el mecanismo de FMR y FNMR que Grother et al. miden sobre millones de imágenes y el ajuste de umbral que Fussey et al. documentan en los pilotos policiales de Londres. El segundo acto mostró la cámara en vivo con el umbral ajustable en tiempo real y demostró que el sistema acepta una fotografía mostrada en la pantalla de un celular como si fuera la persona real, lo que constituye un ataque de presentación de los descritos por Vakhshiteh et al.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{IN4. Analiza los datos obtenidos en el desarrollo de la investigación}
+
+\subsubsection{Comparación entre trabajos y contradicciones}
+
+En la sección 4 del informe se tratan algunos conflictos que existen entre las fuentes o trabajos consultados. La primera es entre Grother et al. (NIST) y Kotwal y Marcel, el cual se expone que mientras el informe del NIST trata el sesgo demográfico como un problema algorítmico medible y reportable, Kotwal y Marcel muestran que balancear los datos de entrenamiento no es suficiente para eliminarlo, porque atributos no demográficos como el peinado, el maquillaje y la reflectancia de la piel son en gran medida causa del error detectado. Lo que hace que se genere la pregunta sobre cuánto del sesgo medido corresponde a un sesgo social codificado en los datos y cuánto a una limitación de percepción visual del modelo.
+
+Otro de los conflictos que se expone habla sobre la discrepancia entre la literatura técnica y el estudio de campo. Grother et al. evalúan el algoritmo de forma aislada en condiciones controladas, pero Fussey et al. muestran que en Londres el eslabón más débil no fue el algoritmo sino el operador humano, de 43 alertas generadas, los operadores juzgaron creíbles 27 y solo 9 se verificaron como correctas. Como tal las fuentes no integran dichos análisis en un mismo estudio, sino que se observan de forma aislada, por un lado el desempeño en un laboratorio y por otro un despliegue real.
+
+Además, una de las tensiones que se habla es que Vakhshiteh et al. introducen un riesgo que ni los estudios de sesgo ni los estudios de despliegue policial contemplan, que es la manipulación deliberada del sistema mediante ataques adversarios, que por ejemplo se podría enlazar con la demo, donde se hace la prueba de mostrar que el sistema no distingue una persona viva de una fotografía que se le muestra en pantalla, que en cierta parte un atacante podría explotar esto.
+
+\subsubsection{Limitaciones}
+
+Las cinco fuentes estudiadas abarcan por separado diferentes deficiencias, el sesgo estadístico del modelo, la discreción humana deficiente y el ataque intencional al sistema. En sí, se pueden considerar limitaciones de este tipo de sistemas dentro del estado del arte, pues en un despliegue real estos tres aspectos podrían acumularse y crear un enorme riesgo en su operación, sin mencionar el cuidado de los datos recopilados post recolección.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{IN5. Elabora conclusiones a partir de la síntesis y análisis de los resultados de la investigación.}
+
+En las fuentes revisadas se observa que el reconocimiento facial ya dejó de ser una tecnología experimental para convertirse en infraestructura operativa en el sector privado y público. Los cinco trabajos coinciden en que su precisión no es igual en todos los casos, varía según el grupo demográfico, puede ser degradada deliberadamente mediante ataques adversarios y su desempeño en laboratorio no garantiza su desempeño en campo. El umbral de decisión es el punto donde estas tres fuentes de error estudiadas por separado, se convierten en consecuencias sobre personas inocentes.
+
+Por otra parte, uno de los vacíos que se puede observar es que se carece de estudios que integren en un mismo marco los tres ejes principales antes mencionados. Ninguno de los cinco trabajos revisados combina estos tres niveles de análisis y esa combinación es precisamente la que explicaría mejor por qué el desempeño medido en laboratorio y el observado en el despliegue real difieren entre sí. A su vez, a la industria le falta transparencia verificable, pues ninguno de los casos revisados muestra a un proveedor comunicando de forma clara a sus clientes cuál es la tasa de error esperada para la población específica sobre la que operará el sistema y los factores que podrían influir independientemente de datos demográficos.
+
+En la sección V del informe se confirma que el impacto negativo ya tiene consecuencias medibles. El caso de Clearview AI en Estados Unidos que produjo el arresto injustificado de Angela Lipps en julio de 2025, terminó en un acuerdo de 200,000 dólares en junio de 2025, dado al grave error de tratar el resultado del algoritmo como una identificación confirmada en lugar de una pista a verificar. Otro de los casos fue en Costa Rica, donde la PRODHAB dictó en mayo de 2026 la Resolución N.° 029-2026-RF, que sancionó al Tribunal Supremo de Elecciones por comercializar datos biométricos sin habilitación legal expresa, observando que el tratado de estos datos biométricos como datos sensibles es necesario para mantener en regulación esta clase de sistemas y el uso de lo que recopilen.
+
+Por último, de acuerdo con lo antes dicho, es válido pensar que los siguientes años se tendrá en vigilancia, primero la manera en que las organizaciones documentan el fundamento de una identificación biométrica, pues este punto será donde recaiga la responsabilidad legal cuando un sistema falle (trazabilidad y auditoría). Segundo, la existencia de marcos regulatorios que traten los datos biométricos como categoría especial, siguiendo un poco el camino de la Unión Europea y que en este caso Costa Rica apenas empieza a recorrer. Y de tercero, la robustez del sistema frente a manipulación deliberada, donde puede que tome mayor relevancia conforme estos sistemas se expandan a sectores con decisiones con un impacto más delicado.
